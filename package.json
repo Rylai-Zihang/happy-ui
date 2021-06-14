@@ -1,0 +1,8 @@
+{
+  "name": "react-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Rylai-Zihang/react-ui.git",
+  "author": "zihang.he <zihang.he@aispeech.com>",
+  "license": "MIT"
+}
