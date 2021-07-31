@@ -17,8 +17,4 @@ describe('classes', () => {
     const result = classes("a", undefined, "c")
     expect(result).toEqual("a c")
   })
-  it('接受falsy参数', () => {
-    const result = classes("a", "", null, "c")
-    expect(result).toEqual("a c")
-  })
 })
