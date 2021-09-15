@@ -105,3 +105,6 @@ dist
 
 .idea
 junit.xml
+
+
+.DS_Store

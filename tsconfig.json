@@ -28,7 +28,7 @@
   "include": [
     "types/**/*",
     "lib/**/*"
-  ],
+, "example.tsx"  ],
   "exclude": [
     "node_modules",
     "build",
