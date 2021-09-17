@@ -6,9 +6,10 @@ export default function() {
   return (
     <div>
       <button onClick={() => { setVisible(!visible) }}>visible</button>
-      <Dialog visible={visible}>
+      <Dialog visible={visible} onClose={() => { setVisible(false) }}>
         hahahaha
       </Dialog>
+      <div style={{ zIndex: 9999 }}>zIndex:9999</div>
     </div>
   )
 }
