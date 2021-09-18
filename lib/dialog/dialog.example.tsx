@@ -8,17 +8,23 @@ export default function () {
     }
     return (
         <div>
-            <button onClick={() => { setVisible(!visible) }}>visible</button>
             <Dialog visible={visible} onClose={() => { setVisible(false) }}>
                 我是一个dialog
             </Dialog>
             <div>
+                <h1>第一个例子</h1>
                 <button onClick={() => { alert("1") }}>test alert</button>
+            </div>
+            <div>
+                <h1>第二个例子</h1>
                 <button onClick={() => { confirm("你要吃饭吗", () => { console.log("吃") }, () => { console.log("不吃") }) }}>
                     test confirm
                 </button>
+            </div>
+            <div>
+                <h1>第三个例子</h1>
                 <button onClick={openModal}>test modal</button>
             </div>
-        </div>
+        </div >
     )
 }

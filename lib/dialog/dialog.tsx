@@ -44,7 +44,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
         props.visible ?
             <Fragment>
                 <div className={dialogPrefix("mask")} onClick={onClickMask}></div>
-                <div className={dialogPrefix()}>
+                <div className={dialogPrefix("")}>
                     <div className="happy-ui-dialog-close">
                         <Icon name="close" onClick={props.onClose} />
                     </div>
