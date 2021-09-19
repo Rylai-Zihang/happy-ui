@@ -9,7 +9,7 @@ const layoutPrefix = prefix("layout")
 const Footer: React.FunctionComponent<Props> = (props) => {
     const { className, ...otherProps } = props
     return (
-        <div className={layoutPrefix("footer")} {...otherProps}>
+        <div className={layoutPrefix("footer", { extra: className })} {...otherProps}>
             {props.children}
         </div>
     )

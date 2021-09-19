@@ -11,7 +11,7 @@ const layoutPrefix = prefix("layout")
 const Aside: React.FunctionComponent<Props> = (props) => {
     const { className, ...otherProps } = props
     return (
-        <div className={layoutPrefix("aside")} {...otherProps}>
+        <div className={layoutPrefix("aside", { extra: className })} {...otherProps}>
             {props.children}
         </div>
     )

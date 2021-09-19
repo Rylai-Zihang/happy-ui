@@ -2,7 +2,7 @@
 
 exports[`icon render successfully 1`] = `
 <svg
-  className="happyui-icon"
+  className="happy-ui-icon"
 >
   <use
     xlinkHref="#cat"

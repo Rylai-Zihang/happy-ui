@@ -20,7 +20,7 @@ const Layout: React.FunctionComponent<Props> = (props) => {
         }, false)
 
     return (
-        <div className={layoutPrefix({ "": true, "has-aside": hasAside })} {...otherProps}>
+        <div className={layoutPrefix({ "": true, "has-aside": hasAside }, { extra: className })} {...otherProps}>
             {props.children}
         </div>
     )
