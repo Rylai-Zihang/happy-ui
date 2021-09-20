@@ -5,25 +5,37 @@
   flex-direction: column;
   min-height: 0;
   background: #f0f2f5;
-  text-align: center;
   &-header {
-    text-align: center;
+    margin: 4px 0;
     padding: 24px 50px;
     background: #f0f2f5;
     background-color: #7dbcea;
   }
   &-content {
+    margin: 4px 0;
+    padding: 24px 50px;
     flex-grow: 1;
     background-color: rgba(16, 142, 233, 1);
   }
   &-footer {
-    height: 64px;
-    padding: 0 50px;
+    margin: 4px 0;
+    padding: 24px 50px;
     background-color: #7dbcea;
   }
   &-aside {
+    margin: 4px 0;
+    padding: 24px 50px;
     background-color: #3ba0e9;
     min-width: 100px;
+    & + .happy-ui-layout-content {
+      margin-left: 8px;
+    }
+    & + .happy-ui-layout {
+      margin-left: 8px;
+      .happy-ui-layout-content {
+        margin-left: 0;
+      }
+    }
   }
   & & {
     flex-direction: row;

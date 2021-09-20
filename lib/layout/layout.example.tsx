@@ -7,7 +7,7 @@ import Header from './header';
 
 const LayoutExample: React.FunctionComponent = () => {
     return (
-        <div>
+        <div style={{ width: 500 }}>
             <div>
                 <h1>第一个例子</h1>
                 <Layout style={{ height: 300 }}>
