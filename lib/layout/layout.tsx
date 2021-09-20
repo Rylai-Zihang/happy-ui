@@ -1,6 +1,9 @@
 import React, { HtmlHTMLAttributes, ReactElement } from "react";
 import prefix from "../helpers/prefix"
+import Header from './header'
+import Content from "./content";
 import Aside from "./aside";
+import Footer from "./footer";
 import "./layout.scss"
 
 interface Props extends HtmlHTMLAttributes<HTMLElement> {
@@ -27,3 +30,11 @@ const Layout: React.FunctionComponent<Props> = (props) => {
 }
 
 export default Layout
+
+export {
+    Layout,
+    Header,
+    Aside,
+    Content,
+    Footer
+}
