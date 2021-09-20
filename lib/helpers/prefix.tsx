@@ -6,16 +6,22 @@ interface Options {
   extra: string | undefined
 }
 
+const UIName = "happy-ui"
+
 function prefix(type: (string | undefined)) {
-  return (name: (string | ClassToggles | undefined), options?: Options) => {
-    if (typeof name === "string" || name === undefined) {
-      return ["happy-ui", type, name].filter(Boolean).join("-")
-    } else {
-      const classes = Object.entries(name).filter(kv => kv[1]).map(kv => kv[0])
-      return classes.map(name => {
-        return ["happy-ui", type, name].filter(Boolean).join("-")
+  return (name: (string | ClassToggles), options?: Options) => {
+    const nameObject = name instanceof Object ?
+      name :
+      { [name]: name }
+
+    const result = Object.entries(nameObject)
+      .filter(kv => kv[1] !== false)
+      .map(kv => kv[0])
+      .map(name => {
+        return [UIName, type, name].filter(Boolean).join("-")
       }).concat(options && options.extra || []).join(" ")
-    }
+
+    return result
   }
 }
 
