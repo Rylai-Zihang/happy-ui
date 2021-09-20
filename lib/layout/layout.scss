@@ -5,12 +5,7 @@
   flex-direction: column;
   min-height: 0;
   background: #f0f2f5;
-  &.has-aside {
-    flex-direction: row;
-    & & {
-      flex-direction: column;
-    }
-  }
+  text-align: center;
   &-header {
     text-align: center;
     padding: 24px 50px;
@@ -32,5 +27,11 @@
   }
   & & {
     flex-direction: row;
+  }
+  &-has-aside {
+    flex-direction: row;
+    & & {
+      flex-direction: column;
+    }
   }
 }
