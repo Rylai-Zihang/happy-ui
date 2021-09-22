@@ -6,8 +6,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Block: path.resolve(__dirname, './components/block.tsx'),
-            CodeExample: path.resolve(__dirname, './components/codeExample.tsx'),
+            Block: path.resolve(__dirname, './src/components/block.tsx'),
+            CodeExample: path.resolve(__dirname, './src/components/codeExample.tsx'),
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
@@ -40,7 +40,7 @@ module.exports = {
             },
             {
                 test: /\.md$/,
-                use: ['babel-loader', path.resolve(__dirname, './scripts/docgen.js')]
+                use: ['babel-loader', path.resolve(__dirname, './loader/docgen.js')]
             }
         ]
     }
