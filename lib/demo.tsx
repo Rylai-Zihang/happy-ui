@@ -2,15 +2,16 @@ import React from 'react'
 import Highlight from 'react-highlight'
 
 interface Props {
-    code: string
+    code: string,
+    lang?: string
 }
 
-const Content: React.FunctionComponent<Props> = (props) => {
+const Demo: React.FunctionComponent<Props> = (props) => {
     const { code } = props
     return (
         <div>
             {props.children}
-            <Highlight className='javascript'>
+            <Highlight className={props.lang}>
                 {code}
             </Highlight>
         </div>
@@ -18,4 +19,8 @@ const Content: React.FunctionComponent<Props> = (props) => {
     )
 }
 
-export default Content
+Demo.defaultProps = {
+    lang: "javascript"
+}
+
+export default Demo

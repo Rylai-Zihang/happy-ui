@@ -5,11 +5,15 @@ module.exports = {
         index: './lib/index.tsx'
     },
     resolve: {
+        alias: {
+            Block: path.resolve(__dirname, './components/block.tsx'),
+            CodeExample: path.resolve(__dirname, './components/codeExample.tsx'),
+        },
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     output: {
         path: path.resolve(__dirname, 'dist/src'),
-        library: 'rui',
+        library: 'happy-ui',
         libraryTarget: 'umd',
     },
     module: {
@@ -33,6 +37,10 @@ module.exports = {
                         loader: 'file-loader',
                     }
                 ],
+            },
+            {
+                test: /\.md$/,
+                use: ['babel-loader', path.resolve(__dirname, './scripts/docgen.js')]
             }
         ]
     }

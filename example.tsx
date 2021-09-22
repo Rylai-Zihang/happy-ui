@@ -1,9 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom'
-import IconDemo from './lib/icon/icon.demo'
-import DialogDemo from './lib/dialog/dialog.demo'
-import LayoutDemo from './lib/layout/layout.demo'
+// import IconDemo from './lib/icon/icon.demo'
+import IconDemo from './lib/icon/demo/icon.md'
+// import DialogDemo from './lib/dialog/dialog.demo'
+import DialogDemo from './lib/dialog/demo/dialog.md'
+// import LayoutDemo from './lib/layout/layout.demo'
+import LayoutDemo from './lib/layout/demo/layout.md'
+
 import { Layout, Header, Aside, Content, Footer } from './lib/layout/layout'
 import "./example.scss"
 import logo from './logo.png'

@@ -1090,7 +1090,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/json-schema@^7.0.8":
+"@types/json-schema@^7.0.5", "@types/json-schema@^7.0.8":
   version "7.0.9"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
 
@@ -1352,7 +1352,7 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   version "3.5.2"
   resolved "https://registry.npmjs.org/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
 
-ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.5:
+ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   dependencies:
@@ -1445,6 +1445,10 @@ argparse@^1.0.7:
   resolved "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
   dependencies:
     sprintf-js "~1.0.2"
+
+argparse@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
 
 arr-diff@^4.0.0:
   version "4.0.0"
@@ -1591,6 +1595,15 @@ babel-jest@^27.0.2, babel-jest@^27.0.6:
     chalk "^4.0.0"
     graceful-fs "^4.2.4"
     slash "^3.0.0"
+
+babel-loader@^8.2.2:
+  version "8.2.2"
+  resolved "https://registry.npmjs.org/babel-loader/-/babel-loader-8.2.2.tgz#9363ce84c10c9a40e6c753748e1441b60c8a0b81"
+  dependencies:
+    find-cache-dir "^3.3.1"
+    loader-utils "^1.4.0"
+    make-dir "^3.1.0"
+    schema-utils "^2.6.5"
 
 babel-plugin-dynamic-import-node@^2.3.3:
   version "2.3.3"
@@ -2780,6 +2793,10 @@ entities@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
 
+entities@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
+
 enzyme-shallow-equal@^1.0.0, enzyme-shallow-equal@^1.0.1:
   version "1.0.4"
   resolved "https://registry.npmjs.org/enzyme-shallow-equal/-/enzyme-shallow-equal-1.0.4.tgz#b9256cb25a5f430f9bfe073a84808c1d74fced2e"
@@ -3197,6 +3214,14 @@ find-cache-dir@^2.1.0:
     make-dir "^2.0.0"
     pkg-dir "^3.0.0"
 
+find-cache-dir@^3.3.1:
+  version "3.3.2"
+  resolved "https://registry.npmjs.org/find-cache-dir/-/find-cache-dir-3.3.2.tgz#b30c5b6eff0730731aea9bbd9dbecbd80256d64b"
+  dependencies:
+    commondir "^1.0.1"
+    make-dir "^3.0.2"
+    pkg-dir "^4.1.0"
+
 find-up@^1.0.0:
   version "1.1.2"
   resolved "https://registry.npmjs.org/find-up/-/find-up-1.1.2.tgz#6b2e9822b1a2ce0a60ab64d610eccad53cb24d0f"
@@ -3476,6 +3501,15 @@ globule@^1.0.0:
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.2.4:
   version "4.2.6"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
+
+gray-matter@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/gray-matter/-/gray-matter-4.0.3.tgz#e893c064825de73ea1f5f7d88c7a9f7274288798"
+  dependencies:
+    js-yaml "^3.13.1"
+    kind-of "^6.0.2"
+    section-matter "^1.0.0"
+    strip-bom-string "^1.0.0"
 
 handle-thing@^2.0.0:
   version "2.0.1"
@@ -4721,6 +4755,12 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+linkify-it@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/linkify-it/-/linkify-it-3.0.2.tgz#f55eeb8bc1d3ae754049e124ab3bb56d97797fb8"
+  dependencies:
+    uc.micro "^1.0.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -4853,7 +4893,7 @@ make-dir@^2.0.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-make-dir@^3.0.0:
+make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
   dependencies:
@@ -4883,6 +4923,28 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it-anchor@^8.3.1:
+  version "8.3.1"
+  resolved "https://registry.npmjs.org/markdown-it-anchor/-/markdown-it-anchor-8.3.1.tgz#b48a2097c89f82e1625db772b8a6a03e9e637cdc"
+
+markdown-it-container@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/markdown-it-container/-/markdown-it-container-3.0.0.tgz#1d19b06040a020f9a827577bb7dbf67aa5de9a5b"
+
+markdown-it-toc-done-right@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/markdown-it-toc-done-right/-/markdown-it-toc-done-right-4.2.0.tgz#3ccdce22d5022ffae7b991d07261b1b1de5459d0"
+
+markdown-it@^12.2.0:
+  version "12.2.0"
+  resolved "https://registry.npmjs.org/markdown-it/-/markdown-it-12.2.0.tgz#091f720fd5db206f80de7a8d1f1a7035fd0d38db"
+  dependencies:
+    argparse "^2.0.1"
+    entities "~2.1.0"
+    linkify-it "^3.0.1"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.npmjs.org/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -4890,6 +4952,10 @@ md5.js@^1.3.4:
     hash-base "^3.0.0"
     inherits "^2.0.1"
     safe-buffer "^5.1.2"
+
+mdurl@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -5676,7 +5742,7 @@ pkg-dir@^3.0.0:
   dependencies:
     find-up "^3.0.0"
 
-pkg-dir@^4.2.0:
+pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-4.2.0.tgz#f099133df7ede422e81d1d8448270eeb3e4261f3"
   dependencies:
@@ -6377,6 +6443,14 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
+schema-utils@^2.6.5:
+  version "2.7.1"
+  resolved "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.1.tgz#1ca4f32d1b24c590c203b8e7a50bf0ea4cd394d7"
+  dependencies:
+    "@types/json-schema" "^7.0.5"
+    ajv "^6.12.4"
+    ajv-keywords "^3.5.2"
+
 schema-utils@^3.0.0:
   version "3.1.1"
   resolved "https://registry.npmjs.org/schema-utils/-/schema-utils-3.1.1.tgz#bc74c4b6b6995c1d88f76a8b77bea7219e0c8281"
@@ -6391,6 +6465,13 @@ scss-tokenizer@^0.2.3:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+section-matter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/section-matter/-/section-matter-1.0.0.tgz#e9041953506780ec01d59f292a19c7b850b84167"
+  dependencies:
+    extend-shallow "^2.0.1"
+    kind-of "^6.0.0"
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -6864,6 +6945,10 @@ strip-ansi@^6.0.0:
   dependencies:
     ansi-regex "^5.0.0"
 
+strip-bom-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/strip-bom-string/-/strip-bom-string-1.0.0.tgz#e5211e9224369fbb81d633a2f00044dc8cedad92"
+
 strip-bom@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-2.0.0.tgz#6219a85616520491f35788bdbf1447a99c7e6b0e"
@@ -7216,6 +7301,10 @@ typedarray@^0.0.6:
 typescript@^3.3.3333:
   version "3.9.10"
   resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
+
+uc.micro@^1.0.1, uc.micro@^1.0.5:
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
 
 uglify-js@3.4.x:
   version "3.4.10"
