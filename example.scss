@@ -29,6 +29,8 @@ pre {
   font-family: 'Fira Code Medium', Consolas, monospace;
 }
 
+@import './node_modules/highlight.js/styles/atom-one-dark.css';
+
 $padding: 16px;
 $main-color: #9e8bd7;
 $border-color: #eee;
