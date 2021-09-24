@@ -8,10 +8,13 @@ interface Props {
     desc?: string
 }
 
-const Code: React.FunctionComponent<Props> = (props) => {
-    const { code, example, lang } = props
+const CodeExample: React.FunctionComponent<Props> = (props) => {
+    const { code, example, lang, desc } = props
     return (
-        <div>
+        <div className="happy-ui-code-eg-container">
+            <div className="happy-ui-desc">
+                {desc}
+            </div>
             <div className="happy-ui-example">
                 {example}
             </div>
@@ -23,8 +26,8 @@ const Code: React.FunctionComponent<Props> = (props) => {
     )
 }
 
-Code.defaultProps = {
+CodeExample.defaultProps = {
     lang: "tsx"
 }
 
-export default Code
+export default CodeExample

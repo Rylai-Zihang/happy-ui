@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        index: './lib/index.tsx'
+        index: './src/lib/index.tsx'
     },
     resolve: {
         alias: {
@@ -40,7 +40,7 @@ module.exports = {
             },
             {
                 test: /\.md$/,
-                use: ['babel-loader', path.resolve(__dirname, './loader/docgen.js')]
+                use: ['babel-loader', path.resolve(__dirname, './loader/markdownLoader.js')]
             }
         ]
     }

@@ -38,7 +38,7 @@ module.exports = function mdLoader(source) {
             level: 3,
             permalink: anchor.permalink.linkInsideHeader({
                 symbol: `
-            <span class="b-anchor"></span>
+            <span class="happy-ui-anchor"></span>
             <span aria-hidden="false">#</span>
           `,
                 placement: 'before'
@@ -48,8 +48,6 @@ module.exports = function mdLoader(source) {
         .use(toc, {
             level: 2
         })
-        // 设置demo代码块
-        // https://www.npmjs.com/package/markdown-it-container
         .use(container, 'desc', {
             render(tokens, index) {
                 if (tokens[index].nesting === 1) {
@@ -61,6 +59,8 @@ module.exports = function mdLoader(source) {
                 }
             }
         })
+        // 设置demo代码块
+        // https://www.npmjs.com/package/markdown-it-container
         .use(container, 'demo', {
             render(tokens, index) {
                 const get = () => {
@@ -70,6 +70,7 @@ module.exports = function mdLoader(source) {
                     for (let i = 0; i < tokens.length; i++) {
                         // 标签打开
                         const start = tokens[i].nesting === 1 && tokens[i].type === 'container_demo_open'
+                        // 标签闭合
                         const end = tokens[i].nesting === -1 && tokens[i].type === 'container_demo_close'
 
                         if (start) {
@@ -79,7 +80,6 @@ module.exports = function mdLoader(source) {
 
                         if (startIndex && end) {
                             let endIndex = i
-
                             for (let i = startIndex; i < endIndex; i++) {
                                 if (tokens[i].type === 'fence') {
                                     map.set(startIndex, {
@@ -91,36 +91,36 @@ module.exports = function mdLoader(source) {
                             }
                         }
                     }
-
                     return map
                 }
+
                 if (tokens[index].nesting === 1) {
                     const m = get()
                     const desc = tokens[index + 2].content.replace(/\n/g, '<br/>')
                     const current = m.get(index)
 
                     return `
-            <CodeExample
-              desc={\`${desc}\`}
-              lang={\`${current?.lang}\`}
-              example={<>${current?.code}</>}
-              code={\`${current?.code}\`}
-            >
-          `
+                            <CodeExample
+                            desc={\`${desc}\`}
+                            lang={\`${current?.lang}\`}
+                            example={<>${current?.code}</>}
+                            code={\`${current?.code}\`}
+                            >
+                        `
                 } else {
                     return '</CodeExample>'
                 }
 
             }
         })
-
+    // gray-matter
+    // https://github.com/jonschlinkert/gray-matter
     const { content, data } = matter(source)
     const mdToHtml = md
         .render(content)
         .replace(/<hr>/g, '<hr />')
         .replace(/<br>/g, '<br />')
         .replace(/class=/g, 'className=')
-
 
     return reactMarkdownTemplate(data.import, mdToHtml)
 }
