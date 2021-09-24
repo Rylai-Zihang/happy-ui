@@ -1,5 +1,6 @@
 import React from 'react'
 import Highlight from 'react-highlight'
+import './style.scss'
 
 interface Props {
     code: string,

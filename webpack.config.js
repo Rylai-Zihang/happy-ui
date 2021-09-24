@@ -6,8 +6,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Block: path.resolve(__dirname, './src/components/block.tsx'),
-            CodeExample: path.resolve(__dirname, './src/components/codeExample.tsx'),
+            Block: path.resolve(__dirname, './src/components/block/block.tsx'),
+            CodeExample: path.resolve(__dirname, './src/components/codeExample/codeExample.tsx'),
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
