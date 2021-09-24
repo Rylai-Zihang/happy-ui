@@ -33,7 +33,7 @@ pre {
 
 $padding: 16px;
 $main-color: #9e8bd7;
-$border-color: #eee;
+$border-color: #f1f1f1;
 
 body {
   font-size: 16px;
@@ -44,9 +44,13 @@ body {
 }
 .site-main {
   padding-top: 16px;
+  padding-left: 16px;
+  background-color: #f7f9fa;
 }
 .site-header {
-  background: $border-color;
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+  z-index: 2;
   padding: 8px 0;
   .logo-container {
     padding: 0 $padding;
@@ -62,8 +66,7 @@ body {
   }
 }
 .site-aside {
-  border-right: 1px solid #eeeeee;
-  margin-right: 16px;
+  border-right: 1px solid $border-color;
   h2 {
     padding: $padding;
     font-size: 18px;
@@ -95,4 +98,41 @@ body {
 }
 .example {
   padding: 16px 0;
+}
+
+// md-container
+.happy-ui-md-container {
+  .table-of-contents {
+    position: fixed;
+    right: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    li {
+      margin: 10px 0;
+    }
+    a {
+      color: $main-color;
+      font-size: 14px;
+    }
+  }
+  ol {
+    padding-left: 0;
+    li {
+      list-style: none;
+    }
+  }
+  li {
+    list-style: initial;
+    & + li {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    margin: 16px 0 16px 0;
+    &:first-of-type {
+      margin-top: 3px;
+    }
+  }
 }

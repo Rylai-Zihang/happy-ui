@@ -27,13 +27,13 @@
   },
   "include": [
     "types/**/*",
-    "lib/**/*"
+    "src/lib/**/*"
 , "example.tsx"  ],
   "exclude": [
     "node_modules",
     "build",
     "dist",
-    "scripts",
+    "loader",
     "acceptance-tests",
     "webpack",
     "jest",

@@ -5,7 +5,6 @@ const outputTarget: React.MouseEventHandler<SVGElement> = (e) => {
     console.log(e.target)
 }
 
-
 const IconExample: React.FunctionComponent = () => {
     return (
         <div>
