@@ -4,7 +4,7 @@ const matter = require('gray-matter')
 const anchor = require('markdown-it-anchor')
 const toc = require('markdown-it-toc-done-right')
 
-const reactMarkdownTemplate = (importSynx, content) => {
+const reactMarkdownTemplate = (importSynx, declare, content) => {
     return `
     import * as React from 'react'
     import Block from 'Block'
@@ -12,6 +12,7 @@ const reactMarkdownTemplate = (importSynx, content) => {
     import Highlight from 'react-highlight'
     ${importSynx}
     function MdReact () {
+        ${declare}
         return <div className='happy-ui-md-container'>${content}</div>
     }
     export default MdReact
@@ -122,5 +123,5 @@ module.exports = function mdLoader(source) {
         .replace(/<br>/g, '<br />')
         .replace(/class=/g, 'className=')
 
-    return reactMarkdownTemplate(data.import, mdToHtml)
+    return reactMarkdownTemplate(data.import, data.declare, mdToHtml)
 }
