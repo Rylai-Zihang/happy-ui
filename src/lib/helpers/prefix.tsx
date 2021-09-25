@@ -6,7 +6,7 @@ interface Options {
   extra: string | undefined
 }
 
-const UIName = "happy-ui"
+const UINAME = "happy-ui"
 
 function prefix(type: (string | undefined)) {
   return (name: (string | ClassToggles), options?: Options) => {
@@ -18,7 +18,7 @@ function prefix(type: (string | undefined)) {
       .filter(kv => kv[1] !== false)
       .map(kv => kv[0])
       .map(name => {
-        return [UIName, type, name].filter(Boolean).join("-")
+        return [UINAME, type, name].filter(Boolean).join("-")
       }).concat(options && options.extra || []).join(" ")
 
     return result

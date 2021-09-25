@@ -5,12 +5,13 @@ import prefix from "../helpers/prefix"
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
     name: string;
+    extra?: string
 }
 
 const Icon: React.FunctionComponent<IconProps> = (props) => {
-    const { className, name, ...restProps } = props
+    const { className, name, extra, ...restProps } = props
     return (
-        <svg className={prefix('icon')(className || "")} {...restProps}>
+        <svg className={prefix('icon')("", { "extra": className })} {...restProps}>
             <use xlinkHref={`#${name}`}></use>
         </svg >)
 }
