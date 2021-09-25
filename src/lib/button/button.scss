@@ -22,10 +22,10 @@
   &:disabled {
     cursor: pointer;
   }
-  .happy-ui-icon-loading {
+  svg {
     font-size: 12px;
     display: inline-block;
-    animation: loading 1.5s linear 0s infinite forwards;
+    animation: loading 3s linear 0s infinite forwards;
   }
 }
 
@@ -41,15 +41,15 @@
 .happy-ui-button {
   &-small {
     padding: 2px 4px;
-    height: 24px;
+    height: 28px;
   }
   &-middle {
     padding: 4px 12px;
-    height: 32px;
+    height: 36px;
   }
   &-large {
     padding: 8px 16px;
-    height: 40px;
+    height: 44px;
   }
 }
 
