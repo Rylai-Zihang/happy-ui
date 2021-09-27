@@ -22,8 +22,9 @@ const Layout: React.FunctionComponent<Props> = (props) => {
             return (node.type === Aside) || result
         }, false)
 
+    const finalClassName = layoutPrefix({ "": true, "has-aside": hasAside }, { extra: className })
     return (
-        <div className={layoutPrefix({ "": true, "has-aside": hasAside }, { extra: className })} {...otherProps}>
+        <div className={finalClassName} {...otherProps}>
             {props.children}
         </div>
     )
