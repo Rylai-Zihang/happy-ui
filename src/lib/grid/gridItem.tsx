@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import './grid.scss'
 import prefix from '../helpers/prefix'
 import BREAKPOINTS from './breakpoint'
 import {
@@ -36,16 +37,15 @@ interface Props {
 const defaultProps = {
     container: false,
     gap: 0,
+    wrap: "wrap",
     xs: false,
     sm: false,
     md: false,
     lg: false,
     className: '',
 }
-const gridPrefix = prefix("grid")
 
-// type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof basicProps>
-// type Props = basicProps & NativeAttrs
+const gridPrefix = prefix("grid")
 
 const getItemLayout = (val: GridBreakpointsValue | undefined): ItemLayoutValue => {
     const display = (val === 0) ? 'display: none;' : 'display: inherit;'
@@ -117,19 +117,20 @@ const Grid: React.FunctionComponent<Props> = (props) => {
         [xs, sm, md, lg],
     )
 
+    console.log({ layout });
+
     const finalClassName = gridPrefix(classes, { extra: className })
     const classPrefix = "happy-ui-grid-"
 
-    // (<div>{children}</div>)
     return container ?
         (<div className={finalClassName} {...otherProps}>
             {children}
             <style jsx>{`
-                .${classPrefix} container {
-                    "display": "flex",
-                    "flex- wrap": ${wrap},
-                    "box-sizing": "border-box",
-                    "gap": ${gap}
+                .${classPrefix}container {
+                    display: flex;
+                    flex-wrap: ${wrap};
+                    box-sizing: "border-box";
+                    {/* gap: ${gap}px; */}
                 }
             `}
             </style>
@@ -153,14 +154,14 @@ const Grid: React.FunctionComponent<Props> = (props) => {
                     align-items: ${alignItems};
                 }
 
-                .${classPrefix}xs {
+                .happy-ui-grid-xs {
                     flex-grow: ${layout.xs.grow};
                     max-width: ${layout.xs.width};
                     flex-basis: ${layout.xs.basis};
                     ${layout.xs.display}
                 }
 
-                @media only screen and(max-width: ${BREAKPOINTS.xs.max}) {
+                @media screen and (max-width: ${BREAKPOINTS.xs.max}) {
                     .${classPrefix}xs {
                         flex-grow: ${layout.xs.grow};
                         max-width: ${layout.xs.width};
@@ -169,7 +170,7 @@ const Grid: React.FunctionComponent<Props> = (props) => {
                     }
                 }
 
-                @media only screen and(min - width: ${BREAKPOINTS.sm.min}) {
+                @media screen and (min-width: ${BREAKPOINTS.sm.min}) {
                     .${classPrefix}sm {
                         flex-grow: ${layout.sm.grow};
                         max-width: ${layout.sm.width};
@@ -178,7 +179,7 @@ const Grid: React.FunctionComponent<Props> = (props) => {
                     }
                 }
 
-                @media only screen and(min - width: ${BREAKPOINTS.md.min}) {
+                @media screen and (min-width: ${BREAKPOINTS.md.min}) {
                     .${classPrefix}md {
                         flex-grow: ${layout.md.grow};
                         max-width: ${layout.md.width};
@@ -187,7 +188,7 @@ const Grid: React.FunctionComponent<Props> = (props) => {
                     }
                 }
 
-                @media only screen and(min - width: ${BREAKPOINTS.lg.min}) {
+                @media screen and (min-width: ${BREAKPOINTS.lg.min}) {
                     .${classPrefix}lg {
                         flex-grow: ${layout.lg.grow};
                         max-width: ${layout.lg.width};
