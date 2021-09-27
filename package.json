@@ -51,6 +51,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.15.0",
     "cross-env": "^7.0.3",
     "css-loader": "^2.1.1",
     "file-loader": "^6.2.0",

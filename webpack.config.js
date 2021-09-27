@@ -20,7 +20,24 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader'
+                exclude: /(node_modules)/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/env', '@babel/react', '@babel/typescript'],
+                    plugins: ['styled-jsx/babel'],
+                },
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'babel-loader',
+                    {
+                        loader: require("styled-jsx/webpack").loader,
+                        options: {
+                            type: 'scoped'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.svg$/,
