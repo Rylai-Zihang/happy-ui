@@ -5,8 +5,8 @@ import IconDemo from './src/lib/icon/demo/icon.md'
 import ButtonDemo from './src/lib/button/demo/button.md'
 import DialogDemo from './src/lib/dialog/demo/dialog.md'
 import LayoutDemo from './src/lib/layout/demo/layout.md'
-// import GridDemo from './src/lib/grid/grid.example'
 import GridDemo from './src/lib/grid/demo/grid.md'
+import FormDemo from './src/lib/form/demo/form.md'
 
 import { Layout, Header, Aside, Content, Footer } from './src/lib/layout/layout'
 import "./example.scss"
@@ -40,6 +40,9 @@ ReactDOM.render(
             <li>
               <NavLink to="/grid">Grid</NavLink>
             </li>
+            <li>
+              <NavLink to="/form">Form</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content className="site-main">
@@ -48,6 +51,7 @@ ReactDOM.render(
           <Route path="/dialog" component={DialogDemo} />
           <Route path="/layout" component={LayoutDemo} />
           <Route path="/grid" component={GridDemo} />
+          <Route path="/form" component={FormDemo} />
         </Content>
       </Layout>
       <Footer className="site-footer">
