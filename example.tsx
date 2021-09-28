@@ -5,8 +5,8 @@ import IconDemo from './src/lib/icon/demo/icon.md'
 import ButtonDemo from './src/lib/button/demo/button.md'
 import DialogDemo from './src/lib/dialog/demo/dialog.md'
 import LayoutDemo from './src/lib/layout/demo/layout.md'
-import GridDemo from './src/lib/grid/grid.example'
-// import GridDemo from './src/lib/grid/demo/grid.md'
+// import GridDemo from './src/lib/grid/grid.example'
+import GridDemo from './src/lib/grid/demo/grid.md'
 
 import { Layout, Header, Aside, Content, Footer } from './src/lib/layout/layout'
 import "./example.scss"
