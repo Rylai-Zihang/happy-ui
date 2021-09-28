@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import css from "styled-jsx/css"
 import './grid.scss'
 import prefix from '../helpers/prefix'
 import BREAKPOINTS from './breakpoint'
@@ -37,7 +38,7 @@ interface Props {
 const defaultProps = {
     container: false,
     gap: 0,
-    wrap: "wrap",
+    wrap: "wrap" as GridContainerWrap,
     xs: false,
     sm: false,
     md: false,
@@ -117,87 +118,102 @@ const Grid: React.FunctionComponent<Props> = (props) => {
         [xs, sm, md, lg],
     )
 
-    console.log({ layout });
-
-    const finalClassName = gridPrefix(classes, { extra: className })
+    const gapUnit = useMemo(() => (gap || 0) * 1 / 2 + 'px', [gap])
     const classPrefix = "happy-ui-grid-"
-
-    return container ?
-        (<div className={finalClassName} {...otherProps}>
+    if (container) {
+        const { className: resolveClassName, styles } = css.resolve`
+            --happy-gap-unit: ${gapUnit};
+            --happy-container-margin: calc(-1 * var(--happy-gap-unit));
+            --happy-container-width: calc(100% + var(--happy-gap-unit) * 2);
+            margin: var(--happy-container-margin) var(--happy-container-margin) var(--happy-container-margin) var(--happy-container-margin);
+            width: var(--happy-container-width);
+        `
+        const finalClassName = gridPrefix(classes, { extra: `${className} ${resolveClassName}` })
+        return (<div className={finalClassName} {...otherProps}>
             {children}
+            {styles}
             <style jsx>{`
                 .${classPrefix}container {
                     display: flex;
                     flex-wrap: ${wrap};
-                    box-sizing: "border-box";
-                    {/* gap: ${gap}px; */}
+                    box-sizing: border-box;
                 }
             `}
             </style>
-        </div>) :
-        (<div className={`${finalClassName} ${classPrefix}item`} {...otherProps}>
-            {children}
-            <style jsx>{`
-                .${classPrefix}justify {
-                    justify-content: ${justify};
-                }
+        </div>)
+    } else {
+        const { className: resolveClassName, styles } = css.resolve`
+            margin: 0;
+            box-sizing: border-box;
+            padding: var(--happy-gap-unit) var(--happy-gap-unit) var(--happy-gap-unit) var(--happy-gap-unit);
+        `
+        const finalClassName = gridPrefix(classes, { extra: `${className} ${resolveClassName}` })
+        return (
+            <div className={`${finalClassName} ${classPrefix}item`} {...otherProps}>
+                {children}
+                {styles}
+                <style jsx>{`
+                    .${classPrefix}justify {
+                        justify-content: ${justify};
+                    }
 
-                .${classPrefix}direction {
-                    flex-direction: ${direction};
-                }
+                    .${classPrefix}direction {
+                        flex-direction: ${direction};
+                    }
 
-                .${classPrefix}alignContent {
-                    align-content: ${alignContent};
-                }
+                    .${classPrefix}alignContent {
+                        align-content: ${alignContent};
+                    }
 
-                .${classPrefix}alignItems {
-                    align-items: ${alignItems};
-                }
+                    .${classPrefix}alignItems {
+                        align-items: ${alignItems};
+                    }
 
-                .happy-ui-grid-xs {
-                    flex-grow: ${layout.xs.grow};
-                    max-width: ${layout.xs.width};
-                    flex-basis: ${layout.xs.basis};
-                    ${layout.xs.display}
-                }
-
-                @media screen and (max-width: ${BREAKPOINTS.xs.max}) {
-                    .${classPrefix}xs {
+                    .happy-ui-grid-xs {
                         flex-grow: ${layout.xs.grow};
                         max-width: ${layout.xs.width};
                         flex-basis: ${layout.xs.basis};
                         ${layout.xs.display}
                     }
-                }
 
-                @media screen and (min-width: ${BREAKPOINTS.sm.min}) {
-                    .${classPrefix}sm {
-                        flex-grow: ${layout.sm.grow};
-                        max-width: ${layout.sm.width};
-                        flex-basis: ${layout.sm.basis};
-                        ${layout.sm.display}
+                    @media screen and (max-width: ${BREAKPOINTS.xs.max}) {
+                        .${classPrefix}xs {
+                            flex-grow: ${layout.xs.grow};
+                            max-width: ${layout.xs.width};
+                            flex-basis: ${layout.xs.basis};
+                            ${layout.xs.display}
+                        }
                     }
-                }
 
-                @media screen and (min-width: ${BREAKPOINTS.md.min}) {
-                    .${classPrefix}md {
-                        flex-grow: ${layout.md.grow};
-                        max-width: ${layout.md.width};
-                        flex-basis: ${layout.md.basis};
-                        ${layout.md.display}
+                    @media screen and (min-width: ${BREAKPOINTS.sm.min}) {
+                        .${classPrefix}sm {
+                            flex-grow: ${layout.sm.grow};
+                            max-width: ${layout.sm.width};
+                            flex-basis: ${layout.sm.basis};
+                            ${layout.sm.display}
+                        }
                     }
-                }
 
-                @media screen and (min-width: ${BREAKPOINTS.lg.min}) {
-                    .${classPrefix}lg {
-                        flex-grow: ${layout.lg.grow};
-                        max-width: ${layout.lg.width};
-                        flex-basis: ${layout.lg.basis};
-                        ${layout.lg.display}
+                    @media screen and (min-width: ${BREAKPOINTS.md.min}) {
+                        .${classPrefix}md {
+                            flex-grow: ${layout.md.grow};
+                            max-width: ${layout.md.width};
+                            flex-basis: ${layout.md.basis};
+                            ${layout.md.display}
+                        }
                     }
-                }
-            `}</style>
-        </div>)
+
+                    @media screen and (min-width: ${BREAKPOINTS.lg.min}) {
+                        .${classPrefix}lg {
+                            flex-grow: ${layout.lg.grow};
+                            max-width: ${layout.lg.width};
+                            flex-basis: ${layout.lg.basis};
+                            ${layout.lg.display}
+                        }
+                    }
+                `}</style>
+            </div>)
+    }
 }
 
 Grid.defaultProps = defaultProps
