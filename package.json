@@ -8,7 +8,8 @@
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_DIR=./test-results/jest/results.xml jest --config=jest.config.ci.js"
+    "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_DIR=./test-results/jest/results.xml jest --config=jest.config.ci.js",
+    "doc": "cross-env NODE_ENV=production webpack --config webpack.config.doc.js"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
+    "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^2.1.1",
     "file-loader": "^6.2.0",
