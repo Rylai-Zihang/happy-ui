@@ -6,6 +6,7 @@ import ButtonDemo from './src/lib/button/demo/button.md'
 import DialogDemo from './src/lib/dialog/demo/dialog.md'
 import LayoutDemo from './src/lib/layout/demo/layout.md'
 import GridDemo from './src/lib/grid/demo/grid.md'
+import InputDemo from './src/lib/input/demo/input.md'
 import FormDemo from './src/lib/form/form.example'
 // import FormDemo from './src/lib/form/demo/form.md'
 
@@ -44,6 +45,9 @@ ReactDOM.render(
             <li>
               <NavLink to="/form">Form</NavLink>
             </li>
+            <li>
+              <NavLink to="/input">Input</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content className="site-main">
@@ -52,6 +56,7 @@ ReactDOM.render(
           <Route path="/dialog" component={DialogDemo} />
           <Route path="/layout" component={LayoutDemo} />
           <Route path="/grid" component={GridDemo} />
+          <Route path="/input" component={InputDemo} />
           <Route path="/form" component={FormDemo} />
         </Content>
       </Layout>

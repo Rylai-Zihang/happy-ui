@@ -1,0 +1,40 @@
+@import '../_helper.scss';
+.happy-ui-input {
+  width: inherit;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-box-align: center;
+  &-container {
+    display: inline-flex;
+    align-items: center;
+    width: inherit;
+  }
+  &-wrapper {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    height: 100%;
+    flex: 1;
+    user-select: none;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    transition: border 0.2s ease 0s, color 0.2s ease 0s;
+    padding: 0;
+  }
+  &-hover {
+    border-color: $accents-4;
+  }
+  input {
+    margin: 4px 10px;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    -webkit-appearance: none;
+    color: $text-color;
+  }
+}
