@@ -6,7 +6,8 @@ import ButtonDemo from './src/lib/button/demo/button.md'
 import DialogDemo from './src/lib/dialog/demo/dialog.md'
 import LayoutDemo from './src/lib/layout/demo/layout.md'
 import GridDemo from './src/lib/grid/demo/grid.md'
-import FormDemo from './src/lib/form/demo/form.md'
+import FormDemo from './src/lib/form/form.example'
+// import FormDemo from './src/lib/form/demo/form.md'
 
 import { Layout, Header, Aside, Content, Footer } from './src/lib/layout/layout'
 import "./example.scss"
