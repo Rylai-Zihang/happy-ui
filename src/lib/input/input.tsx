@@ -26,10 +26,10 @@ const Input: React.FunctionComponent<Props> = (props) => {
     const heightRatio = scaleMap[scale || "small"]
     const fontSizeRatio = fontSizeMap[scale || "small"]
     const { className: resolveClassName, styles } = css.resolve`
-            --happy-ui-input-height: calc(${heightRatio} * 16px);
-            --happy-ui-input-size: calc(${fontSizeRatio} * 16px);
-            height: var(--happy-ui-input-height);
-        `
+        --happy-ui-input-height: calc(${heightRatio} * 16px);
+        --happy-ui-input-size: calc(${fontSizeRatio} * 16px);
+        height: var(--happy-ui-input-height);
+    `
     const [hover, setHover] = useState(false)
     const onBlur = () => {
         setHover(false)

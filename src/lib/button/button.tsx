@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import prefix from '../helpers/prefix'
 import Icon from '../icon/icon'
 import './button.scss'
 
-export interface Props {
+export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean
     loading?: boolean
     ghost?: boolean
@@ -11,7 +11,7 @@ export interface Props {
     backgroundColor?: string
     color?: string
     className?: string
-    type?: 'default' | 'text' | 'primary' | 'success' | 'warning' | 'danger'
+    category?: 'default' | 'text' | 'primary' | 'success' | 'warning' | 'danger'
     iconDirection?: 'left' | 'right'
     size?: 'small' | 'middle' | 'large'
     onClick?: () => void
@@ -31,7 +31,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
         // color,
         className,
         iconDirection,
-        type,
+        category,
         size,
         onClick
     } = props
@@ -39,7 +39,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
     const finalIcon = loading ? 'loading' : (icon ? icon : '')
     const finalIconElement = finalIcon ? <Icon className="happy-ui-button-icon" name={finalIcon}></Icon> : ""
     const sizeClass = (size || "middle")
-    const typeClass = (type || "primary")
+    const categoryClass = (category || "primary")
 
     const content = (iconDirection === 'left') ? (
         <div className="happy-ui-button-container">
@@ -60,8 +60,8 @@ const Button: React.FunctionComponent<Props> = (props) => {
                 "loading": loading || false,
                 "disabled": disabled || false,
                 [sizeClass]: true,
-                [typeClass]: true,
-                [typeClass + "-ghost"]: ghost || false,
+                [categoryClass]: true,
+                [categoryClass + "-ghost"]: ghost || false,
             }, { extra: className })}
             disabled={disabled || loading}
             onClick={onClick}>
@@ -79,7 +79,7 @@ Button.defaultProps = {
     ghost: false,
     backgroundColor: "#a09fdd",
     color: "#fff",
-    type: "default",
+    category: "default",
     iconDirection: "left",
     size: "middle"
 }
