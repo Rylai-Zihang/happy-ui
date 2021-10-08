@@ -1,14 +1,18 @@
 import * as React from 'react'
 import Form from './form'
 import { useState, Fragment } from 'react'
-import FormValue from './formValueType';
+import { FormValue, FormLabelPosition, FormRules } from './formTypes';
 import validator from './validator';
+import Button from '../button/button';
 
 const FormExample: React.FunctionComponent = () => {
     const [formData, setFormData] = useState<FormValue>({
         username: '111',
         password: '123'
     })
+
+    const [labelPosition, setLabelPosition] = useState<FormLabelPosition>("left")
+    const [labelWidth, setLabelWidth] = useState(60)
 
     const [fields] = useState([
         { name: 'username', label: '用户名', input: { type: 'text' } },
@@ -17,12 +21,11 @@ const FormExample: React.FunctionComponent = () => {
 
     const [errors, setErrors] = useState({})
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        const rules = [
+        const rules: FormRules = [
             { key: 'username', required: true },
             { key: 'username', minLength: 8, maxLength: 20 }
         ]
         const errors = validator(formData, rules)
-        setErrors(errors)
         console.log({ formData, errors })
     }
 
@@ -37,10 +40,12 @@ const FormExample: React.FunctionComponent = () => {
                 fields={fields}
                 buttons={
                     <Fragment>
-                        <button type="submit">提交</button>
-                        <button>返回</button>
+                        <Button type="submit">提交</Button>
+                        <Button>返回</Button>
                     </Fragment>
                 }
+                labelPosition={labelPosition}
+                labelWidth={labelWidth}
                 errors={errors}
                 onChange={onChange}
                 onSubmit={onSubmit}
