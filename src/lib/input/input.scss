@@ -14,12 +14,13 @@
     vertical-align: middle;
     align-items: center;
     height: 100%;
+    padding: 0;
     flex: 1;
+    background-color: #fff;
     user-select: none;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     transition: border 0.2s ease 0s, color 0.2s ease 0s;
-    padding: 0;
   }
   &-hover {
     border-color: $accents-4;

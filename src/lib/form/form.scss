@@ -1,6 +1,19 @@
 .happy-ui-form {
   &-table {
     border-collapse: separate;
-    border-spacing: 0 1em;
+    border-spacing: 0 1.5em;
+  }
+  &-content {
+    position: relative;
+  }
+  &-warning {
+    position: absolute;
+    left: 0;
+    font-size: 0.7em;
+    color: red;
+    margin-top: 0.2em;
+  }
+  &-label {
+    vertical-align: top;
   }
 }

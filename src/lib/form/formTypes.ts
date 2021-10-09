@@ -6,7 +6,11 @@ type FormRule = {
     key: string,
     required?: boolean,
     minLength?: number,
-    maxLength?: number
+    maxLength?: number,
+    validator?: {
+        name: string,
+        validate: (value: string) => Promise<void>
+    }
 }
 
 type FormRules = Array<FormRule>

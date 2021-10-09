@@ -5,7 +5,6 @@ import { FormValue, FormError, FormLabelPosition } from "./formTypes"
 import Input from "../input/input"
 import "./form.scss"
 import { fontSizeMap, FormElementSize } from "../utils/sizeMaps"
-import css from "styled-jsx/css"
 
 interface Props {
     value: FormValue;
@@ -17,12 +16,7 @@ interface Props {
     onChange: (Value: FormValue) => void;
     onSubmit: React.FormEventHandler<HTMLFormElement>;
     errors: FormError;
-}
-
-const defaultProps = {
-    scale: "small" as FormElementSize,
-    labelPostion: "left" as FormLabelPosition,
-    labelWidth: 50
+    errorsDisplayMode?: "first" | "all";
 }
 
 const formPrefix = prefix("form")
@@ -33,7 +27,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
         props.onSubmit(e)
     }
 
-    const { fields, buttons, value, onChange, errors, labelPosition, labelWidth, scale } = props
+    const { fields, buttons, value, onChange, errors, labelPosition, labelWidth, scale, errorsDisplayMode } = props
     const formData = value
 
     const onInputChange = (name: string, value: string) => {
@@ -54,9 +48,13 @@ const Form: React.FunctionComponent<Props> = (props) => {
                         return (
                             <tr className={formPrefix("row")} key={f.name}>
                                 <td className={formPrefix("label")}>{f.label}</td>
-                                <td>
+                                <td className={formPrefix("content")}>
                                     <Input scale={scale} type={f.input.type} value={formData[f.name]} onChange={(e) => onInputChange(f.name, e.target.value)} ></Input>
-                                    <div className={formPrefix("warning")}>{errors[f.name]}</div>
+                                    <div className={formPrefix("warning")}>{
+                                        errorsDisplayMode === "first" ?
+                                            errors[f.name] && errors[f.name][0] :
+                                            errors[f.name] && errors[f.name].join(". ")
+                                    }</div>
                                 </td>
                             </tr>)
                     })}
@@ -80,6 +78,11 @@ const Form: React.FunctionComponent<Props> = (props) => {
     )
 }
 
-Form.defaultProps = defaultProps
+Form.defaultProps = {
+    scale: "small" as FormElementSize,
+    labelPosition: "left" as FormLabelPosition,
+    labelWidth: 50,
+    errorsDisplayMode: "all"
+}
 
 export default Form
