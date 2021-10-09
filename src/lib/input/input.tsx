@@ -3,7 +3,7 @@ import { useState } from "react"
 import "../helpers/importAll"
 import prefix from "../helpers/prefix"
 import { InputHTMLAttributes } from "react"
-import { InputSize, scaleMap, fontSizeMap } from "./inputTypes"
+import { FormElementSize, scaleMap, fontSizeMap } from "../utils/sizeMaps"
 import css from "styled-jsx/css"
 import "./input.scss"
 
@@ -14,21 +14,23 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     extra?: string;
     prefix?: string;
     suffix?: string;
-    scale?: InputSize;
+    scale?: FormElementSize;
 }
 
 const defaultProps = {
-    scale: "small" as InputSize
+    scale: "small" as FormElementSize
 }
 
 const Input: React.FunctionComponent<Props> = (props) => {
     const { className, scale, extra, ...restProps } = props
-    const heightRatio = scaleMap[scale || "small"]
-    const fontSizeRatio = fontSizeMap[scale || "small"]
+    const defaultScale = scale || "small"
+    const heightRatio = scaleMap[defaultScale]
+    const fontSizeRatio = fontSizeMap[defaultScale]
     const { className: resolveClassName, styles } = css.resolve`
         --happy-ui-input-height: calc(${heightRatio} * 16px);
         --happy-ui-input-size: calc(${fontSizeRatio} * 16px);
         height: var(--happy-ui-input-height);
+        fontSize: var(--happy-ui-input-size);
     `
     const [hover, setHover] = useState(false)
     const onBlur = () => {
@@ -41,7 +43,7 @@ const Input: React.FunctionComponent<Props> = (props) => {
         <div className={inputPrefix({ "": true }, { extra: className })}>
             <div className={inputPrefix('container', { extra: resolveClassName })}>
                 <div className={inputPrefix({ "wrapper": true, "hover": hover })}>
-                    <input style={{ fontSize: "var(--happy-ui-input-size)" }} {...restProps} onBlur={onBlur} onFocus={onFocus}></input>
+                    <input {...restProps} onBlur={onBlur} onFocus={onFocus}></input>
                 </div>
             </div>
             {styles}

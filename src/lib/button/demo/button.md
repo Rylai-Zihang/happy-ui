@@ -35,7 +35,7 @@ import: import Button from "../button"; import Grid from "../../grid/gridItem";
 
 ::: demo
 
-这个是按钮的描述
+禁用
 
 ```tsx
 <Grid container gap={10} style={{ width: '500px' }}>
@@ -66,7 +66,7 @@ import: import Button from "../button"; import Grid from "../../grid/gridItem";
 
 ::: demo
 
-这个是按钮的描述
+加载
 
 ```tsx
 <Grid container gap={10} style={{ width: '500px' }}>
@@ -87,6 +87,31 @@ import: import Button from "../button"; import Grid from "../../grid/gridItem";
     <Button category="danger" loading>
       主要按钮
     </Button>
+  </Grid>
+</Grid>
+```
+
+:::
+
+## Size 大小
+
+::: demo
+
+这个是按钮大小的配置
+
+```tsx
+<Grid container gap={10} style={{ width: '500px' }}>
+  <Grid xs={4}>
+    <Button scale="mini">默认按钮</Button>
+  </Grid>
+  <Grid xs={5}>
+    <Button scale="small">默认按钮</Button>
+  </Grid>
+  <Grid xs={6}>
+    <Button scale="medium">默认按钮</Button>
+  </Grid>
+  <Grid xs={9}>
+    <Button scale="large">默认按钮</Button>
   </Grid>
 </Grid>
 ```

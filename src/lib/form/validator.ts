@@ -1,5 +1,4 @@
-import FormRules from "./formRulesTypes";
-import FormValue from "./formValueType";
+import {FormRules, FormValue} from "./formTypes";
 
 
 function isEmpty(value:any):boolean {

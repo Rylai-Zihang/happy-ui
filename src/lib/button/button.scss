@@ -16,6 +16,9 @@
     display: inline-block;
     margin: 0 1px;
   }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .happy-ui-button-loading {
@@ -23,9 +26,9 @@
     cursor: pointer;
   }
   svg {
-    font-size: 12px;
     display: inline-block;
     animation: loading 3s linear 0s infinite forwards;
+    margin-left: -0.5em;
   }
 }
 
@@ -39,17 +42,21 @@
 }
 
 .happy-ui-button {
+  &-mini {
+    padding: 2px 8px;
+    line-height: 22px;
+  }
   &-small {
-    padding: 2px 4px;
-    height: 28px;
+    padding: 2px 8px;
+    line-height: 22px;
   }
   &-middle {
     padding: 4px 12px;
-    height: 36px;
+    line-height: 22px;
   }
   &-large {
     padding: 8px 16px;
-    height: 44px;
+    line-height: 30px;
   }
 }
 

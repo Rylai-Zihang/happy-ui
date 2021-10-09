@@ -4,6 +4,7 @@ import prefix from "../helpers/prefix"
 import { FormValue, FormError, FormLabelPosition } from "./formTypes"
 import Input from "../input/input"
 import "./form.scss"
+import { FormElementSize } from "../utils/sizeMaps"
 
 interface Props {
     value: FormValue;
@@ -11,12 +12,14 @@ interface Props {
     buttons: React.ReactFragment;
     labelPosition?: FormLabelPosition;
     labelWidth?: string | number;
+    scale?: FormElementSize;
     onChange: (Value: FormValue) => void;
     onSubmit: React.FormEventHandler<HTMLFormElement>;
     errors: FormError;
 }
 
 const defaultProps = {
+    scale: "small" as FormElementSize,
     labelPostion: "left" as FormLabelPosition,
     labelWidth: 60
 }
@@ -29,7 +32,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
         props.onSubmit(e)
     }
 
-    const { fields, buttons, value, onChange, errors, labelPosition, labelWidth } = props
+    const { fields, buttons, value, onChange, errors, labelPosition, labelWidth, scale } = props
     const formData = value
 
     const onInputChange = (name: string, value: string) => {
@@ -48,14 +51,19 @@ const Form: React.FunctionComponent<Props> = (props) => {
                             <tr className={formPrefix("row")} key={f.name}>
                                 <td className={formPrefix("label")}>{f.label}</td>
                                 <td>
-                                    <Input type={f.input.type} value={formData[f.name]} onChange={(e) => onInputChange(f.name, e.target.value)} ></Input>
+                                    <Input scale={scale} type={f.input.type} value={formData[f.name]} onChange={(e) => onInputChange(f.name, e.target.value)} ></Input>
                                     <div className={formPrefix("warning")}>{errors[f.name]}</div>
                                 </td>
                             </tr>)
                     })}
+                    <tr className={formPrefix("row")}>
+                        <td></td>
+                        <td>
+                            {buttons}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <div>{buttons}</div>
             <style jsx>{`
                 .happy-ui-form-label {
                     width: ${finalLabelWidth};

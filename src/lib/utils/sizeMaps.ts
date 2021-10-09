@@ -1,11 +1,11 @@
-import { tuple } from "../utils/propTypes";
+import { tuple } from "./propTypes";
 
 const size = tuple('mini', 'small', 'medium', 'large')
 
 type SizeMap = {
-    [k in InputSize]: number
+    [k in FormElementSize]: number
 }
-export type InputSize = typeof size[number]
+export type FormElementSize = typeof size[number]
 
 const scaleMap: SizeMap = {
     "mini": 1.6,
@@ -20,5 +20,12 @@ const fontSizeMap: SizeMap = {
     "medium": 1,
     "large": 6 / 5
 }
-export { scaleMap, fontSizeMap }
 
+const paddingMap: SizeMap = {
+    "mini": 2 / 3,
+    "small": 4 / 5,
+    "medium": 1,
+    "large": 6 / 5
+}
+
+export { scaleMap, fontSizeMap, paddingMap }

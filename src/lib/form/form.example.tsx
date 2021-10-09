@@ -2,6 +2,7 @@ import * as React from 'react'
 import Form from './form'
 import { useState, Fragment } from 'react'
 import { FormValue, FormLabelPosition, FormRules } from './formTypes';
+import { FormElementSize } from '../utils/sizeMaps';
 import validator from './validator';
 import Button from '../button/button';
 
@@ -13,6 +14,7 @@ const FormExample: React.FunctionComponent = () => {
 
     const [labelPosition, setLabelPosition] = useState<FormLabelPosition>("left")
     const [labelWidth, setLabelWidth] = useState(60)
+    const [scale, setScale] = useState<FormElementSize>("small")
 
     const [fields] = useState([
         { name: 'username', label: '用户名', input: { type: 'text' } },
@@ -38,10 +40,11 @@ const FormExample: React.FunctionComponent = () => {
             {JSON.stringify(formData)}
             <Form value={formData}
                 fields={fields}
+                scale={scale}
                 buttons={
                     <Fragment>
-                        <Button type="submit">提交</Button>
-                        <Button>返回</Button>
+                        <Button scale={scale} category="primary" type="submit" style={{ 'marginRight': '10px' }}>提交</Button>
+                        <Button scale={scale}>返回</Button>
                     </Fragment>
                 }
                 labelPosition={labelPosition}
