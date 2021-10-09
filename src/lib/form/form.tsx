@@ -4,7 +4,8 @@ import prefix from "../helpers/prefix"
 import { FormValue, FormError, FormLabelPosition } from "./formTypes"
 import Input from "../input/input"
 import "./form.scss"
-import { FormElementSize } from "../utils/sizeMaps"
+import { fontSizeMap, FormElementSize } from "../utils/sizeMaps"
+import css from "styled-jsx/css"
 
 interface Props {
     value: FormValue;
@@ -21,7 +22,7 @@ interface Props {
 const defaultProps = {
     scale: "small" as FormElementSize,
     labelPostion: "left" as FormLabelPosition,
-    labelWidth: 60
+    labelWidth: 50
 }
 
 const formPrefix = prefix("form")
@@ -41,6 +42,9 @@ const Form: React.FunctionComponent<Props> = (props) => {
     }
 
     const finalLabelWidth = ((labelWidth + "").indexOf("px") > -1) ? labelWidth : (labelWidth + "px")
+
+    const defaultScale = scale || "small"
+    const fontSizeRatio = fontSizeMap[defaultScale]
 
     return (
         <form onSubmit={onSubmit}>
@@ -68,6 +72,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
                 .happy-ui-form-label {
                     width: ${finalLabelWidth};
                     text-align: ${labelPosition};
+                    font-size: calc(${fontSizeRatio} * 16px);
                 }
             `}
             </style>

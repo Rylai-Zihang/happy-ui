@@ -37,7 +37,6 @@ const FormExample: React.FunctionComponent = () => {
 
     return (
         <div>
-            {JSON.stringify(formData)}
             <Form value={formData}
                 fields={fields}
                 scale={scale}

@@ -29,6 +29,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
         loading,
         children,
         icon,
+        backgroundColor,
         className,
         iconDirection,
         category,
@@ -53,6 +54,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
         font-size: var(--happy-ui-button-size);
         padding: 0 var(--happy-ui-button-padding);
         border-radius: calc(${fontSizeRatio} * 6px);
+        background-color: calc(${backgroundColor});
     `
 
     const content = (iconDirection === 'left') ? (
