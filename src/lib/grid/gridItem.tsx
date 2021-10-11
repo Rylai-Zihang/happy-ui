@@ -60,7 +60,7 @@ const getItemLayout = (val: GridBreakpointsValue | undefined): ItemLayoutValue =
             basis: ratio,
         }
     }
-    // boolean值的意义?
+    /* val为boolean：自适应延伸 */
     return {
         grow: 1,
         display,
@@ -118,11 +118,13 @@ const Grid: React.FunctionComponent<Props> = (props) => {
         [xs, sm, md, lg],
     )
 
+    /* unit是gap设置项的一半 */
     const gapUnit = useMemo(() => (gap || 0) * 1 / 2 + 'px', [gap])
     const classPrefix = "happy-ui-grid-"
     if (container) {
         const { className: resolveClassName, styles } = css.resolve`
             --happy-gap-unit: ${gapUnit};
+            /* margin为负：边沿向外延伸，抵消最外围padding */
             --happy-container-margin: calc(-1 * var(--happy-gap-unit));
             --happy-container-width: calc(100% + var(--happy-gap-unit) * 2);
             margin: var(--happy-container-margin) var(--happy-container-margin) var(--happy-container-margin) var(--happy-container-margin);
