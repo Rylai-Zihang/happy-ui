@@ -29,4 +29,9 @@
       }
     }
   }
+  &-content {
+    & + .happy-ui-layout-aside {
+      margin-left: 8px;
+    }
+  }
 }

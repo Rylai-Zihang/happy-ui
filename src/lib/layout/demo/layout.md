@@ -66,12 +66,12 @@ import: import { Layout, Aside, Content, Footer, Header } from '../layout.tsx';i
       header
     </Header>
     <Layout>
-      <Aside className="example-aside" style={{ color: 'white' }}>
-        aside
-      </Aside>
       <Content className="example-content" style={{ color: 'white' }}>
         content
       </Content>
+      <Aside className="example-aside" style={{ color: 'white' }}>
+        aside
+      </Aside>
     </Layout>
     <Footer className="example-footer" style={{ color: 'white' }}>
       footer
@@ -84,15 +84,15 @@ import: import { Layout, Aside, Content, Footer, Header } from '../layout.tsx';i
 
 ::: demo
 
-布局的描述
+布局四
 
 ```tsx
 <div>
-  <Layout style={{ height: 300 }}>
+  <Layout className="example" style={{ height: 300 }}>
     <Aside className="example-aside" style={{ color: 'white' }}>
       aside
     </Aside>
-    <Layout className="example">
+    <Layout>
       <Header className="example-header" style={{ color: 'white' }}>
         header
       </Header>
