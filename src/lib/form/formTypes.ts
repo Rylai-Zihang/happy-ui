@@ -8,7 +8,7 @@ type FormRule = {
     minLength?: number,
     maxLength?: number,
     validator?: {
-        name: string,
+        name?: string,
         validate: (value: string) => Promise<void>
     }
 }

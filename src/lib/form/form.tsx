@@ -17,6 +17,7 @@ interface Props {
     onSubmit: React.FormEventHandler<HTMLFormElement>;
     errors: FormError;
     errorsDisplayMode?: "first" | "all";
+    transformError?: (error: string) => string
 }
 
 const formPrefix = prefix("form")
@@ -35,6 +36,15 @@ const Form: React.FunctionComponent<Props> = (props) => {
         onChange(newValue)
     }
 
+    const transformErrorFn = (message) => {
+        const map = {
+            required: "required",
+            "min-length": "too short",
+            "max-length": "too long"
+        }
+        return props.transformError && props.transformError(message) || map[message] || "未知错误"
+    }
+
     const finalLabelWidth = ((labelWidth + "").indexOf("px") > -1) ? labelWidth : (labelWidth + "px")
 
     const defaultScale = scale || "small"
@@ -51,9 +61,11 @@ const Form: React.FunctionComponent<Props> = (props) => {
                                 <td className={formPrefix("content")}>
                                     <Input scale={scale} type={f.input.type} value={formData[f.name]} onChange={(e) => onInputChange(f.name, e.target.value)} ></Input>
                                     <div className={formPrefix("warning")}>{
-                                        errorsDisplayMode === "first" ?
-                                            errors[f.name] && errors[f.name][0] :
-                                            errors[f.name] && errors[f.name].join(". ")
+                                        errors[f.name] ?
+                                            (errorsDisplayMode === "first" ?
+                                                transformErrorFn(errors[f.name][0]!) :
+                                                errors[f.name].map(transformErrorFn).join(". ")) :
+                                            <br />
                                     }</div>
                                 </td>
                             </tr>)

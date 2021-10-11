@@ -23,6 +23,14 @@ const FormExample: React.FunctionComponent = () => {
         { name: 'password', label: '密码', input: { type: 'password' } },
     ])
 
+    const transformError = (error: string) => {
+        const map = {
+            "username-exist": "用户名已存在",
+            "invalid-phone-number": "电话号码格式有误"
+        }
+        return map[error]
+    }
+
     const checkUserName = (username: string, resolve: () => void, reject: (string) => void) => {
         setTimeout(() => {
             // fake ajax
@@ -30,7 +38,8 @@ const FormExample: React.FunctionComponent = () => {
             if (existNames.indexOf(username) < 0) {
                 resolve()
             } else {
-                reject({ errorKey: "username", errorMsg: "用户名已存在" })
+                // todo key repeated
+                reject({ key: "username", msg: "username-exist" })
             }
         }, 1000)
     }
@@ -42,7 +51,7 @@ const FormExample: React.FunctionComponent = () => {
             if (reg.test(phone)) {
                 resolve()
             } else {
-                reject({ errorKey: "phone", errorMsg: "不正确的电话号码" })
+                reject({ key: "phone", msg: "invalid-phone-number" })
             }
         }, 1000)
     }
@@ -54,7 +63,6 @@ const FormExample: React.FunctionComponent = () => {
             { key: 'username', minLength: 5, maxLength: 10 },
             {
                 key: 'username', validator: {
-                    name: 'username-exist',
                     validate: (value: string) => {
                         return new Promise((resolve, reject) => {
                             checkUserName(value, resolve, reject)
@@ -64,7 +72,6 @@ const FormExample: React.FunctionComponent = () => {
             },
             {
                 key: 'phone', validator: {
-                    name: 'invalid-number',
                     validate: (value: string) => {
                         return new Promise((resolve, reject) => {
                             checkPhoneNumber(value, resolve, reject)
@@ -99,6 +106,7 @@ const FormExample: React.FunctionComponent = () => {
                 errors={errors}
                 onChange={onChange}
                 onSubmit={onSubmit}
+                transformError={transformError}
             />
         </div>
     );

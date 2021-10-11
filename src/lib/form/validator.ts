@@ -21,7 +21,7 @@ function fromEntries(arr: Array<[string, string[]]>) {
 }
 
 interface Error {
-    msg: string,
+    msg?: string,
     promise?: Promise<any>
 }
 
@@ -37,7 +37,7 @@ const validator = (formValue: FormValue, formRules: FormRules, callback: (errors
     formRules.map(rule => {
         const value = formValue[rule.key]
         if(rule.validator) {
-            addError(rule.key, { msg: rule.validator.name, promise: rule.validator.validate(value) })
+            addError(rule.key, { promise: rule.validator.validate(value) })
         }
         if(rule.required) {
             if(isEmpty(value)) {
@@ -60,16 +60,20 @@ const validator = (formValue: FormValue, formRules: FormRules, callback: (errors
     Promise.all(promiseArr).then(() => {
         const newErrors = fromEntries(
             Object.keys(errors).map(key => {
-                return [key, errors[key].filter((error:Error) => !error.promise).map((error: Error) => error.msg)]
+                const syncErrors = errors[key].filter((error:Error) => !error.promise).map((error: Error) => error.msg)
+                return [key, syncErrors]
             })
         )
         callback(newErrors)
-    }, (promiseError) => {
-        const { errorKey, errorMsg } = promiseError
-        addError(errorKey, { msg: errorMsg })
+    }, ({ key: errorKey, msg }) => {
         const newErrors = fromEntries(
             Object.keys(errors).map(key => {
-                return [key, errors[key].filter((error:Error) => !error.promise).map((error:Error) => error.msg)]
+                const syncErrors = errors[key].filter((error:Error) => !error.promise).map((error: Error) => error.msg)
+                if(errorKey === key) {
+                    return [key, syncErrors.concat(msg)]
+                } else {
+                    return [key, syncErrors]
+                }
             })
         )
         console.log({ errors, newErrors })
