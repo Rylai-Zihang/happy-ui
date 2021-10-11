@@ -7,6 +7,7 @@ import DialogDemo from './src/lib/dialog/demo/dialog.md'
 import LayoutDemo from './src/lib/layout/demo/layout.md'
 import GridDemo from './src/lib/grid/demo/grid.md'
 import InputDemo from './src/lib/input/demo/input.md'
+import RadioDemo from './src/lib/radio/radio.example'
 import FormDemo from './src/lib/form/form.example'
 // import FormDemo from './src/lib/form/demo/form.md'
 
@@ -43,10 +44,13 @@ ReactDOM.render(
               <NavLink to="/grid">Grid</NavLink>
             </li>
             <li>
-              <NavLink to="/form">Form</NavLink>
+              <NavLink to="/input">Input</NavLink>
             </li>
             <li>
-              <NavLink to="/input">Input</NavLink>
+              <NavLink to="/radio">Radio</NavLink>
+            </li>
+            <li>
+              <NavLink to="/form">Form</NavLink>
             </li>
           </ul>
         </Aside>
@@ -57,6 +61,7 @@ ReactDOM.render(
           <Route path="/layout" component={LayoutDemo} />
           <Route path="/grid" component={GridDemo} />
           <Route path="/input" component={InputDemo} />
+          <Route path="/radio" component={RadioDemo} />
           <Route path="/form" component={FormDemo} />
         </Content>
       </Layout>
