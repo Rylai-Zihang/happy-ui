@@ -1,8 +1,0 @@
-[class^='happy-ui-'] {
-  box-sizing: border-box;
-  // 对伪元素特别说明
-  &::after,
-  &::before {
-    box-sizing: border-box;
-  }
-}
